@@ -292,9 +292,11 @@ class Game:
 	    heartmeter.index = player.hitpoints
 
             for b in self.room.bullets:
-		b.update(self.room, player)
-		b.draw(screen,self.room)
-
+		if b.update(self.room, player) == 1:
+			self.room.bullets.remove(b)
+			###print "removed bullet"
+		else:
+			b.draw(screen,self.room)
 
             for o in self.room.gameobjects:
                 if o:

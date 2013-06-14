@@ -30,6 +30,9 @@ class Bullet(Gameobject):
         self.w = 32
         self.h = 32
         self.hitpoints = 2
+
+	self.startx = xx
+	self.starty = yy
         
         self.yy = yy
     
@@ -47,9 +50,14 @@ class Bullet(Gameobject):
     def update(self,room,player):
 	if self.direction == "left":
 		self.x -= 5
+		if self.x < self.startx - 600:
+			return 1
 	elif self.direction == "right":
 		self.x += 5
-
+		if self.x > self.startx + 600:
+			return 1
+	return 0
+	
     def collide(self, room, player):
         # FIX BUG
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
