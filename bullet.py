@@ -19,45 +19,48 @@ from pygame.locals import *
 from gameobject import *
 from stateimagelibrary import *
 import random
+from time import *
+from math import *
 from rng import *
 
-class RubySword(Gameobject):
-    "Ruby Sword"
-    def __init__(self,xx,yy):
+class Bullet(Gameobject):
+    ""
+    def __init__(self,xx,yy,direction):
 	Gameobject.__init__(self, xx, yy)
-        self.w = 36
-        self.h = 36
-	self.stimlib = Stateimagelibrary()		
-        image = pygame.image.load('./pics/taskbar-rubysword1-32x32.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-	self.hitpoints = 10	
+        self.w = 32
+        self.h = 32
+        self.hitpoints = 2
+        
+        self.yy = yy
+    
+        self.image = pygame.image.load('./pics/bullet-1.bmp').convert()
+        self.image.set_colorkey((0,0,255))
+        
+	self.direction = direction 
+
+        self.crawling = 1
+        self.up = 0
 
     def draw(self, screen, room):
-        self.stimlib.draw(screen, self.x+room.relativex,self.y+room.relativey)
-	
-	     
+            screen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
+	    
     def update(self,room,player):
-	1
-
-    def pickup(self, room):
-	return 5
+	if self.direction == "left":
+		self.x -= 5
+	elif self.direction == "right":
+		self.x += 5
 
     def collide(self, room, player):
         # FIX BUG
-        ###print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
-	if (player.x-room.relativex > self.x  and 
-	player.x-room.relativex < self.x+self.w and 
-	player.y-room.relativey > self.y and 
-	player.y-room.relativey < self.y + self.h):
-	    print "collision with RubySword!"
-	    return 5 
+	if (player.x-room.relativex > self.x-self.w  and 
+	player.x-room.relativex < self.x+self.w+self.w and 
+	player.y-room.relativey > self.y-self.h and 
+	player.y-room.relativey < self.y + self.h +self.h):
+	    print "collision with Deeler!"
+	    return 1 
 	else:
 	    return 0 ## for game self.talker
 
-    def collidewithsword(self, room, player):
-	return 0
-
-    def roll(self):
-	return RNG().rollrubysword()        
+    def fight(self,room,player,keydown = -1):
+        1

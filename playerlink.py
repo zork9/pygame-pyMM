@@ -47,6 +47,26 @@ class PlayerLink(PlayerBase):
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)
 
+        self.stimlibleft = Stateimagelibrary()	
+        image = pygame.image.load('./pics/megaman-left-1.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+	image = pygame.image.load('./pics/megaman-left-2.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+	image = pygame.image.load('./pics/megaman-left-3.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+	image = pygame.image.load('./pics/megaman-left-4.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+	image = pygame.image.load('./pics/megaman-left-5.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+	image = pygame.image.load('./pics/megaman-left-6.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibleft.addpicture(image)
+
         self.stimlibfight = Stateimagelibrary()	
         image = pygame.image.load('./pics/megaman-right-1.bmp').convert()
         image.set_colorkey((0,0,0))
@@ -66,7 +86,7 @@ class PlayerLink(PlayerBase):
 #       	self.sword = BroadSword(0,0)
         self.duck = 0
         self.jumpcounter = 0
- 
+
     def askclass(self):
         return "Assassin"
 

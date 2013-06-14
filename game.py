@@ -26,6 +26,7 @@ from inventory import *
 from meter import *
 from playerkattafighter import*
 from playerlink import *
+from bullet import *
 
 class Game:
     "Main function"
@@ -130,15 +131,27 @@ class Game:
                         self.keydown = 2
                         #FIXME keydown = 2
                         #self.room.moveup()    
+
+
+			### kludge
                     elif event.key == K_LEFT:
+			player.prevdirection = player.direction
+			player.direction = "left"
                         player.duck = 0
-                        self.room.moveright()    
+                        self.room.moveright()   
                     elif event.key == K_RIGHT:
                         player.duck = 0
                         self.room.moveleft()    
+			player.prevdirection = player.direction
+			player.direction = "right"
                     elif event.key == K_x:
                         if player.jumpcounter == 0:
                             player.jump(self.room)  
+                    elif event.key == K_c:
+                        if player.prevdirection == "left":
+				self.room.bullets.append(Bullet(player.x,player.y,"left")) 
+                        elif player.prevdirection == "right":
+				self.room.bullets.append(Bullet(player.x,player.y,"right")) 
     
                     elif event.key == K_i:
 #                        self.level.gameover = 1
@@ -173,6 +186,8 @@ class Game:
 
                                 inventory.draw(screen)
                                 pygame.display.update()
+                else:
+                    player.direction = "none"
  
 #	    pickupid = self.room.pickup(player)
 #	    if pickupid:
@@ -244,6 +259,8 @@ class Game:
                                 gameflag = 1
                             elif event.key == K_z:
                                 gameflag = 1
+
+
                     self.room.draw(screen,player)
                     player.update(self.room)
                     player.drawclimbing(screen)
@@ -263,7 +280,7 @@ class Game:
                 self.keydown = 2
                 player.drawduck(screen)
                 player.h = 32
-            else:
+            elif player.direction == "none":
                 player.drawstatic(screen)
             
             #player.draw(screen)
@@ -273,6 +290,11 @@ class Game:
 
 	    ### Set player hitpoints in life bar
 	    heartmeter.index = player.hitpoints
+
+            for b in self.room.bullets:
+		b.update(self.room, player)
+		b.draw(screen,self.room)
+
 
             for o in self.room.gameobjects:
                 if o:

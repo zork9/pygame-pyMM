@@ -36,6 +36,7 @@ class MaproomDungeon(MaproomBase):
         self.tileboxes = []
         self.pits = []
         self.ropes = []
+	self.bullets = []
         
     def addnorthwall(self, x,y):
         self.northwalls.append(MaproomNorthDungeonWall(x,y))
