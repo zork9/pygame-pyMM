@@ -70,5 +70,18 @@ class Bullet(Gameobject):
 	else:
 	    return 0 ## for game self.talker
 
+    def collide(self, room, o):
+        # FIX BUG
+        #print 'gameobject x=%d y=%d o x=%d y=%d' % (self.x,self.y,o.x-room.relativex,o.y-room.relativey)
+	if (o.x-room.relativex > self.x-self.w  and 
+	o.x-room.relativex < self.x+self.w+self.w and 
+	o.y-room.relativey > self.y-self.h and 
+	o.y-room.relativey < self.y + self.h +self.h):
+	    print "collision with Bullet!"
+	    return 1 
+	else:
+	    return 0 ## for game self.talker
+
+
     def fight(self,room,player,keydown = -1):
         1

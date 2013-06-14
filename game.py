@@ -149,9 +149,9 @@ class Game:
                             player.jump(self.room)  
                     elif event.key == K_c:
                         if player.prevdirection == "left":
-				self.room.bullets.append(Bullet(player.x,player.y,"left")) 
+				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+20,"left")) 
                         elif player.prevdirection == "right":
-				self.room.bullets.append(Bullet(player.x,player.y,"right")) 
+				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+20,"right")) 
     
                     elif event.key == K_i:
 #                        self.level.gameover = 1
@@ -297,6 +297,12 @@ class Game:
 			###print "removed bullet"
 		else:
 			b.draw(screen,self.room)
+
+		for go in self.room.gameobjects:
+			if b.collide(self.room,go) == 1:
+				self.room.gameobjects.remove(go)
+				self.room.bullets.remove(b)
+###FIXME				self.room.bullets.remove(b)
 
             for o in self.room.gameobjects:
                 if o:

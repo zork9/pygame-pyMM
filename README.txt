@@ -1,5 +1,5 @@
 
-- c button shoot
-
-- z,x buttons (talk & fight with sword)
+- c button : shoot
 - arrows movement
+
+old keys - z,x buttons (talk & fight with sword)

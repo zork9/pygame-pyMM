@@ -50,8 +50,8 @@ class PlayerBase(PlayerBase,PlayerBase):
 	self.prevdirection = "right"
         self.x = 280 
         self.y = 300 
-        self.w = 72
-        self.h = 72
+        self.w = 50 
+        self.h = 50 
 #	self.stimlib = Stateimagelibrary()	
 #        image = pygame.image.load('./pics/player1-30x30.bmp').convert()
 #        image.set_colorkey((0,0,0)) 

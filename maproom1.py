@@ -35,6 +35,8 @@ from digdogger import *
 from ironknuckle import *
 from deeler import *
 from daira import *
+from mirror import *
+from skeletondrone import *
 
 class Maproom1(MaproomDungeon):
     "Room with a (big) map"
@@ -62,6 +64,7 @@ class Maproom1(MaproomDungeon):
 #        self.gameobjects.append(Deeler(900,100))
 #        self.gameobjects.append(Deeler(2000,100))
 #        self.gameobjects.append(Deeler(1700,100))
+        self.gameobjects.append(SkeletonDrone(600,320))
         
         
         # left NOTE : boxes collide so put them after enemies !
