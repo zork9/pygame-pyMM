@@ -42,32 +42,6 @@ class Game:
         self.room = Maproom1(0,0)
         heartmeter = Meter()
         player = PlayerMegaMan(heartmeter)
-##        selector = Selector(screen, font)
-##
-##        selector.select()
-##        
-##	heartmeter = Meter()
-##	player = PlayerFighter(heartmeter)##default fighter class
-##	if selector.askrace() == "Human":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerHumanFighter(heartmeter)
-##            elif selector.askclass() == "Magic User":
-##                player = PlayerMagicUser(heartmeter)
-##        if selector.askrace() == "Bugbear":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerGnollFighter(heartmeter)
-##        if selector.askrace() == "Katta":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerKattaFighter(heartmeter)
-##        if selector.askrace() == "Elven":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerElfFighter(heartmeter)
-##        if selector.askrace() == "Abeille":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerAbeilleFighter(heartmeter)
-##        
-##        player2 = None
-##
         pygame.key.set_repeat(10,100)
         self.keydown = 0
         self.inventoryitem = None
@@ -107,18 +81,6 @@ class Game:
             	    self.keydown = 1
                     # player 1 key controls
                     
-##                    if event.key == K_x:
-##                        if self.room.collide(player) == 2:
-##                            self.talker = self.room.talkto() # FIX
-##                            print "self.talker=%s" % self.talker
-##			if self.talker == None:
-##                        	id = player.pickup(self.room)
-##				if id == 5:
-##		                	self.taskbar.setrubysword()
-##					player.setrubysword()
-                    
-##                    elif event.key == K_UP:
-##                        self.room.movedown()    
                     if event.key == K_DOWN:
                         player.duck = 1
                         self.keydown = 2
@@ -146,57 +108,9 @@ class Game:
                         elif player.prevdirection == "right":
 				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+20,"right")) 
     
-                    elif event.key == K_i:
-#                        self.level.gameover = 1
-                      #FIXME  pygame.event.flush()
-                        flag = 0
-                        inventory = Inventory()
-		
-			##if Scrollinvisibility(0,0,0,0,"1","1").readkeys(None):
-                        ##    inventory.additem(Inventoryscrollinvisibility())
-
-			if self.inventorymasterkey == 1:
-                       		1###FIX for key in inventory.additem(Inventorymasterkey())
-                        if self.inventorykey1 == 1:
-                       		1###FIX for key in inventory.additem(Inventorykey1())
-                       	if self.inventorykey2 == 1:
-                       		1###FIX for key in inventory
-			while flag == 0:#NOTE1
-                            for event in pygame.event.get():
-                                if event.type == QUIT:
-                                    return
-
-                                elif event.type == KEYDOWN:
-                                    if event.key == K_LEFT:
-                                        inventory.moveleft()
-                                    elif event.key == K_RIGHT:
-                                        inventory.moveright()
-                                    elif event.key == K_z:
-                                        self.inventoryitem = inventory.getitem(self.inventoryitem)
-
-                                        flag = 1
-
-
-                                inventory.draw(screen)
-                                pygame.display.update()
                 else:
                     player.direction = "none"
  
-#	    pickupid = self.room.pickup(player)
-#	    if pickupid:
-#		if pickupid == 1: # NOTE : masterkey id
-#		    self.inventorymasterkey = 1
-#		elif pickupid == 2: ## NOTE: dungeonentrance 2 id opens with key 1
- #                   if self.inventorykey1 == 1:
-#                        self.room.removeentrance2()
-#                elif pickupid == 3: # NOTE dungeon key 1 id
-#                    self.inventorykey1 = 1
-#                elif pickupid == 4: # NOTE dungeon key 2 id
-#                    self.inventorykey2 = 1
-#                elif pickupid == 5: # NOTE ruby sword id
-#                    self.inventoryrubysword = 1
-#                    self.taskbar.setrubysword()
-                    
             if self.room.collide(player) == 1 or player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (player.hit)
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
@@ -213,7 +127,6 @@ class Game:
 					return
 				    
             if self.room.collide(player) == 3 or self.room.collide(player) == 2:###Dungeon wall
-                ###self.room.undomove() ### FIXME for rebound on enemies
                 f = self.room.fall(player)
                 if not f == 2:
                     self.room.movedown()#FIXME
@@ -265,7 +178,7 @@ class Game:
             if self.room.collide(player) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
                    o = player.hit()
 		   if o == 0:
-			player.hitpoints = -100###extra:
+			player.hitpoints = -100###extra
                	   else:
 			self.undomovecollide(player)
  
@@ -281,10 +194,7 @@ class Game:
             elif player.direction == "none":
                 player.drawstatic(screen)
             
-            #player.draw(screen)
 	    sleep(0.05)
-            # fight for enemies
-            # remove dead game objects
 
 	    ### Set player hitpoints in life bar
 	    heartmeter.index = player.hitpoints
@@ -292,7 +202,6 @@ class Game:
             for b in self.room.bullets:
 		if b.update(self.room, player) == 1:
 			self.room.bullets.remove(b)
-			###print "removed bullet"
 		else:
 			b.draw(screen,self.room)
 
@@ -350,68 +259,6 @@ class Game:
         elif (roomnumber == 1):
             self.talker = None
             self.room = Maproom1(self.x,self.y)
-        elif (roomnumber == 1.1):
-            self.talker = None
-            self.room = Maproom1_1(self.x,self.y)
-        elif (roomnumber == 1.2):
-            self.talker = None
-            self.room = Maproom1_2(self.x,self.y)
-        elif (roomnumber == 1.3):
-            self.talker = None
-            self.room = Maproominn1_3(self.x,self.y)
-        elif (roomnumber == 1.4):
-            self.talker = None
-            self.room = Maproominn1_4(self.x,self.y)
-        elif (roomnumber == 1.5):
-            self.talker = None
-            self.room = Maproominn1_5(self.x,self.y)
-        elif (roomnumber == 1.6):
-            self.talker = None
-            self.room = Maproominn1_6(self.x,self.y)
-        # NOTE left woods of haunted castle
-        elif (roomnumber == "1.1.1"):
-            self.talker = None
-            self.room = Maproom1_1_1(self.x,self.y)
-        # rooms of haunted castle    
-        elif (roomnumber == 2):
-            self.talker = None
-            self.room = Maproom2(self.x,self.y)
-        elif (roomnumber == 3):
-            self.talker = None
-            self.room = Maproom3(self.x,self.y)
-        elif (roomnumber == 4):
-            self.talker = None
-            self.room = Maproom4(self.x,self.y)
-        elif (roomnumber == 5):
-            self.talker = None
-            self.room = Maproom5(self.x,self.y)
-        elif (roomnumber == 6):
-            self.talker = None
-            self.room = Maproom6(self.x,self.y)
-        elif (roomnumber == 7):
-            self.talker = None
-            self.room = Maproom7(self.x,self.y)
-        elif (roomnumber == 8):
-            self.talker = None
-            self.room = Maproom8(self.x,self.y)
-        elif (roomnumber == 9):
-            self.talker = None
-            self.room = Maproom9(self.x,self.y)
-        elif (roomnumber == 10):
-            self.talker = None
-            self.room = Maproom10(self.x,self.y)
-        elif (roomnumber == 11):
-            self.talker = None
-            self.room = Maproom11(self.x,self.y)
-        elif (roomnumber == 12):
-            self.talker = None
-            self.room = Maproom12(self.x,self.y)
-        elif (roomnumber == 13):
-            self.talker = None
-            self.room = Maproom13(self.x,self.y)
-        elif (roomnumber == 14):
-            self.talker = None
-            self.room = Maproom14(self.x,self.y)
         # set sword parameters
         if self.inventoryrubysword:
             self.sethitf(self.room.gameobjects.hit2)
