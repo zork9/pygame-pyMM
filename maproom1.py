@@ -51,8 +51,8 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Box(0,400,1300,25))
         self.gameobjects.append(Box(1280,460,300,25))
         self.gameobjects.append(Box(1580,550,300,25))
-        self.gameobjects.append(Box(1920,580,300,25))
-        self.gameobjects.append(Box(2250,580,150,25))
+        self.gameobjects.append(Box(1920,560,300,25))
+        self.gameobjects.append(Box(2250,560,150,25))
         self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
         # ropes       

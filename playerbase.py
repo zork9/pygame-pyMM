@@ -33,7 +33,7 @@ class PlayerBase(PlayerBase,PlayerBase):
         self.y = 300 
         self.w = 50 
         self.h = 50
-	self.hforplatform = 40  ### NOTE 
+	self.hforplatform = 50  ### NOTE 
         self.fightcounter = 0
 
     def drawstatic(self, screen):

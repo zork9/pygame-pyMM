@@ -66,7 +66,6 @@ class Game:
             
         gameover = 0
         while gameover == 0:
-            player.h = 72 ############FIXME NOTE: for ducking
             for event in pygame.event.get():
                 if event.type == QUIT:
                     return
