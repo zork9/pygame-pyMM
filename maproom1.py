@@ -20,6 +20,7 @@ from maproomdungeon import *
 from bigsnail import *
 from imagebox import *
 from skeletondrone import *
+from greenscorpion import *
 
 class Maproom1(MaproomDungeon):
     "Room with a (big) map"
@@ -43,10 +44,10 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
-        self.gameobjects.append(SkeletonDrone(600,320))
-        self.gameobjects.append(SkeletonDrone(700,320))
-        self.gameobjects.append(SkeletonDrone(800,320))
-        self.gameobjects.append(SkeletonDrone(1000,320))
+        self.gameobjects.append(GreenScorpion(600,320))
+        self.gameobjects.append(GreenScorpion(700,320))
+        self.gameobjects.append(GreenScorpion(800,320))
+        self.gameobjects.append(GreenScorpion(1000,320))
         self.gameobjects.append(BigSnail(830,92))
         self.gameobjects.append(BigSnail(2425,600))
         
