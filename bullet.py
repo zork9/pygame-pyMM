@@ -46,8 +46,7 @@ class Bullet(Gameobject):
 
     def draw(self, screen, room):
             ###FIXscreen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
-	    print "rely=%d" % room.relativey
-            screen.blit(self.image, (self.x-40,self.starty + room.relativey))
+            screen.blit(self.image, (self.x-40, self.starty + room.relativey)) # NOTE starty
 	    
     def update(self,room,player):
 	if self.direction == "left":

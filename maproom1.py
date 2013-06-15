@@ -44,6 +44,9 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.southwall1)
 
         self.gameobjects.append(SkeletonDrone(600,320))
+        self.gameobjects.append(SkeletonDrone(700,320))
+        self.gameobjects.append(SkeletonDrone(800,320))
+        self.gameobjects.append(SkeletonDrone(1000,320))
         self.gameobjects.append(BigSnail(830,92))
         self.gameobjects.append(BigSnail(2425,600))
         
