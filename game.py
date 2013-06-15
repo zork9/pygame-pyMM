@@ -99,7 +99,7 @@ class Game:
             
         gameover = 0
         while gameover == 0:
-            player.h = 72 # NOTE: for ducking
+            player.h = 72 ############FIXME NOTE: for ducking
             for event in pygame.event.get():
                 if event.type == QUIT:
                     return
@@ -302,7 +302,6 @@ class Game:
 			if b.collide(self.room,go) == 1:
 				self.room.gameobjects.remove(go)
 				self.room.bullets.remove(b)
-###FIXME				self.room.bullets.remove(b)
 
             for o in self.room.gameobjects:
                 if o:

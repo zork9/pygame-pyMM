@@ -42,9 +42,7 @@ class SkeletonDrone(Gameobject):
 	self.stimlib.addpicture(image)
 
     def draw(self, screen, room):
-##	self.stimlib.draw(screen,self.x,self.y,0)
         self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
-            ###screen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
 	    
     def update(self,room,player):
 	   self.x -= 2 

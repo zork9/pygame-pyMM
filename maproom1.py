@@ -44,6 +44,13 @@ class Maproom1(MaproomDungeon):
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/bg1-2400x600.bmp').convert()
+
+
+	self.w = 2400
+	self.h = 480
+
+	self.mapoffsetx = 400
+
         ###self.northwall1 = Tilebox(1,1,60,48,16,1,'./pics/walldungeonnorth2-beholderglass-60x48.bmp')
 ##        self.northwall1 = Tilebox(1,1,60,48,13,1,'./pics/walldungeonnorth1-60x48.bmp')
 ##        self.southwall1 = Tilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
@@ -135,6 +142,21 @@ class Maproom1(MaproomDungeon):
 		return i ## NOTE : returns collided entity (single), put enemies before walls in gameobjects
 	return None
 
+    def moveleft(self):
+        self.direction = "west"
+	self.prevx = self.relativex + 10
+	self.prevy = self.relativey
+        self.relativex = self.relativex - 10
+
+### NOTE : the following code does not move a map window to the left,
+###	   the player cfannot go left
+
+    def moveright(self):
+        self.direction = "east"
+	self.prevx = self.relativex - 10
+	self.prevy = self.relativey
+	if self.relativex > 0:
+	        self.relativex = self.relativex + 10
 
     def removeobject(self, o):
         for i in range(0,len(self.gameobjects)):
