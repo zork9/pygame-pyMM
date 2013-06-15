@@ -1,6 +1,6 @@
 run 'python game.py' after installing pygame (http://pygame.org)
 
-- c button : shoot
 - arrows movement
+- z button : shoot
 - x button : jump
 
