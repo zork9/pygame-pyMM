@@ -45,6 +45,7 @@ class Maproom1(MaproomDungeon):
 
         self.gameobjects.append(SkeletonDrone(600,320))
         self.gameobjects.append(BigSnail(830,92))
+        self.gameobjects.append(BigSnail(2425,600))
         
         
         # left NOTE : boxes collide so put them after enemies !
@@ -53,7 +54,10 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Box(1580,550,300,25))
         self.gameobjects.append(Box(1920,560,300,25))
         self.gameobjects.append(Box(2250,560,150,25))
+	# First BigSnail sits here
         self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
+	# Second BigSnail sits here
+        self.gameobjects.append(ImageBox(2400,704,265,25,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
         # ropes       
         #self.ropes.append(Rope(605,100,300))
