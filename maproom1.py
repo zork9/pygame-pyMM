@@ -21,13 +21,13 @@ from bigsnail import *
 from imagebox import *
 from skeletondrone import *
 from greenscorpion import *
+from rainman import *
 
 class Maproom1(MaproomDungeon):
     "Room with a (big) map"
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/bg2-2400x600.bmp').convert()
-
 
 	self.w = 2400
 	self.h = 480
@@ -44,6 +44,7 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
+        self.gameobjects.append(Rainman(1000,140))
         self.gameobjects.append(GreenScorpion(600,320))
         self.gameobjects.append(GreenScorpion(700,320))
         self.gameobjects.append(GreenScorpion(800,320))
