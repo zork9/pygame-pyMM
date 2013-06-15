@@ -30,6 +30,8 @@ class BigSnail(Gameobject):
         self.w = 180
         self.h = 110 
         self.hitpoints = 2
+
+	self.eyesclosedcounter = 0
         
         self.yy = yy
     
@@ -38,8 +40,19 @@ class BigSnail(Gameobject):
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)
 
+        self.stimlibeyesclosed = Stateimagelibrary()	
+        image = pygame.image.load('./pics/snail-left-eyesclosed-1.bmp').convert()
+        image.set_colorkey((0,0,0)) 
+	self.stimlibeyesclosed.addpicture(image)
+
     def draw(self, screen, room):
-        self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
+	self.eyesclosedcounter += 1
+	if self.eyesclosedcounter > 23:
+        	self.stimlibeyesclosed.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
+		if self.eyesclosedcounter > 26:
+			self.eyesclosedcounter = 0
+	else:
+	        self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
 	    
     def update(self,room,player):
 	1 

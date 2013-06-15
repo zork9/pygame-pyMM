@@ -74,7 +74,7 @@ class Maproom1(MaproomDungeon):
 #        self.gameobjects.append(Deeler(2000,100))
 #        self.gameobjects.append(Deeler(1700,100))
         self.gameobjects.append(SkeletonDrone(600,320))
-        self.gameobjects.append(BigSnail(820,92))
+        self.gameobjects.append(BigSnail(830,92))
         
         
         # left NOTE : boxes collide so put them after enemies !
