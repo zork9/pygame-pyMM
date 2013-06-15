@@ -82,7 +82,7 @@ class PlayerLink(PlayerBase):
         image.set_colorkey((0,0,0))
         self.stimlibduck.addpicture(image)
 
-        self.hitpoints = 100
+        self.hitpoints = 10
 #       	self.sword = BroadSword(0,0)
         self.duck = 0
         self.jumpcounter = 0
@@ -95,6 +95,14 @@ class PlayerLink(PlayerBase):
 
     def askpicture(self):
         return './pics/taskbar-PC-drowmage.bmp'
+
+    def hit(self):
+	self.heartmeter.index -= 1
+	self.hitpoints -= 1
+	if self.heartmeter.index <= 0:
+		return 0 #FIXME1 FIX for gameover when collision with enemies 
+	else:
+		return 1	
 
     def collidewithenemyweapon(self,room,o):
         # FIXME NOTE

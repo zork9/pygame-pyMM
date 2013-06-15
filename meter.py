@@ -37,6 +37,7 @@ class Meter:
     def draw(self,screen):
 	# KLUDGY
 	j = 0
-	for i in range(0,self.index/10):
+	###for i in range(0,self.index/10):
+	for i in range(0,self.index):
         	screen.blit(self.hearts[0].image, (17+j*12, 26))
 		j += 1
