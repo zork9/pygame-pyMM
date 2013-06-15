@@ -150,8 +150,8 @@ class PlayerBase(PlayerBase,PlayerBase):
 ##
 
         
-    def hit(self):
-	self.heartmeter.index -= 1 
+    def hit(self):##overrriden in playerlink.py
+	self.heartmeter.index -= 1
 	if self.heartmeter.index <= 0:
 		return 0 #FIXME1 FIX for gameover when collision with enemies 
 	else:
