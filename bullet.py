@@ -27,8 +27,8 @@ class Bullet(Gameobject):
     ""
     def __init__(self,xx,yy,direction):
 	Gameobject.__init__(self, xx, yy)
-        self.w = 32
-        self.h = 32
+        self.w = 20 
+        self.h = 20 
         self.hitpoints = 2
 
 	self.startx = xx
@@ -45,7 +45,9 @@ class Bullet(Gameobject):
         self.up = 0
 
     def draw(self, screen, room):
-            screen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
+            ###FIXscreen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
+	    print "rely=%d" % room.relativey
+            screen.blit(self.image, (self.x-40,self.starty + room.relativey))
 	    
     def update(self,room,player):
 	if self.direction == "left":
@@ -65,19 +67,17 @@ class Bullet(Gameobject):
 	player.x-room.relativex < self.x+self.w+self.w and 
 	player.y-room.relativey > self.y-self.h and 
 	player.y-room.relativey < self.y + self.h +self.h):
-	    print "collision with Deeler!"
+	    print "player collision with Bullet!"
 	    return 1 
 	else:
 	    return 0 ## for game self.talker
 
     def collide(self, room, o):
-        # FIX BUG
-        #print 'gameobject x=%d y=%d o x=%d y=%d' % (self.x,self.y,o.x-room.relativex,o.y-room.relativey)
 	if (o.x-room.relativex > self.x-self.w  and 
 	o.x-room.relativex < self.x+self.w+self.w and 
 	o.y-room.relativey > self.y-self.h and 
 	o.y-room.relativey < self.y + self.h +self.h):
-	    print "collision with Bullet!"
+	    print "go collision with Bullet!"
 	    return 1 
 	else:
 	    return 0 ## for game self.talker

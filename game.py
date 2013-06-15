@@ -103,9 +103,9 @@ class Game:
                             player.jump(self.room)  
                     elif event.key == K_c:
                         if player.prevdirection == "left":
-				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+20,"left")) 
+				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+10,"left")) 
                         elif player.prevdirection == "right":
-				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+20,"right")) 
+				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+10,"right")) 
     
                 else:
                     player.direction = "none"
@@ -205,6 +205,7 @@ class Game:
 			b.draw(screen,self.room)
 
 		for go in self.room.gameobjects:
+			### FIXME enemy hitpoints
 			if b.collide(self.room,go) == 1:
 				self.room.gameobjects.remove(go)
 				self.room.bullets.remove(b)
