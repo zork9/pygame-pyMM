@@ -25,6 +25,7 @@ from maproomdungeonnorthwall import *
 from goblin1 import *
 from goblin2 import *
 from goblin3 import *
+from bigsnail import *
 from tilebox import *
 from rope import *
 #from snake1 import *
@@ -73,11 +74,13 @@ class Maproom1(MaproomDungeon):
 #        self.gameobjects.append(Deeler(2000,100))
 #        self.gameobjects.append(Deeler(1700,100))
         self.gameobjects.append(SkeletonDrone(600,320))
+        self.gameobjects.append(BigSnail(820,92))
         
         
         # left NOTE : boxes collide so put them after enemies !
         self.gameobjects.append(Box(0,400,2400,25))
         self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
+        self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
 ##        self.gameobjects.append(Bullfrog(500,225))
 ##        self.gameobjects.append(Bullfrog(600,225))
         # right

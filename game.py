@@ -105,10 +105,10 @@ class Game:
                     return
                 elif event.type == KEYDOWN:
                     if event.key == K_z:
-                        if self.keydown == 2 or player.duck:
-                            player.fightlow(self.room)
-                        else:
-                            player.fightmedium(self.room)
+                        1###if self.keydown == 2 or player.duck:
+                        #    player.fightlow(self.room)
+                        #else:
+                        #    player.fightmedium(self.room)
                         break
                     # FIXME KLUDGE
             	    self.keydown = 1
