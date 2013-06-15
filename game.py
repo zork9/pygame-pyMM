@@ -268,9 +268,14 @@ class Game:
                     heartmeter.draw(screen) 
                     pygame.display.update()
                     screen.blit(blankimage, (0,0))
-                    
-            
-                
+
+            if self.room.collide(player) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
+                   o = player.hit()
+		   if o == 0:
+			player.hitpoints = -100###extra:
+               	   else:
+			self.undomovecollide(player)
+ 
             self.room.draw(screen,player)
             player.update(self.room)
             if self.keydown == 1:
@@ -320,6 +325,23 @@ class Game:
             roomnumber = self.room.exit(self)
             self.chooseroom(roomnumber,font)
 
+    def undomovecollide(self, player):
+            if self.room.collide(player) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
+		if player.direction == "left":
+			self.room.moveleft() 
+			self.room.moveleft() 
+			self.room.moveleft() 
+           	elif player.direction == "right": 
+			self.room.moveright() 
+			self.room.moveright() 
+			self.room.moveright() 
+		else:###FIXME move down and up
+			self.room.moveup()
+			self.room.moveup()
+			self.room.moveup()
+
+		if self.room.collide(player) == 2:
+			self.undomovecollide(player) 
 
     def sethitf(self, hitf):
         for i in self.room.gameobjects:
