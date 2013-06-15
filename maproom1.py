@@ -36,6 +36,7 @@ from ironknuckle import *
 from deeler import *
 from daira import *
 from mirror import *
+from imagebox import *
 from skeletondrone import *
 
 class Maproom1(MaproomDungeon):
@@ -69,6 +70,7 @@ class Maproom1(MaproomDungeon):
         
         # left NOTE : boxes collide so put them after enemies !
         self.gameobjects.append(Box(0,400,2400,425))
+        self.gameobjects.append(ImageBox(0,200,265,225,"./pics/platform-265x50-1.bmp"))
 ##        self.gameobjects.append(Bullfrog(500,225))
 ##        self.gameobjects.append(Bullfrog(600,225))
         # right

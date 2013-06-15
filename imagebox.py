@@ -16,11 +16,11 @@
 
 import pygame
 from pygame.locals import *
-from gameobject import *
+from box import *
 
-class Box(Gameobject):
-    "Box"
-    def __init__(self, xx,yy,ww,hh):
+class ImageBox(Box):
+    "ImageBox"
+    def __init__(self, xx,yy,ww,hh,imgfn):
         Gameobject.__init__(self,xx,yy)
         self.w = ww
         self.h = hh
@@ -28,6 +28,7 @@ class Box(Gameobject):
         #FIX is in base class 
 	#self.image = pygame.image.load('./pics/.bmp').convert()
         #self.image.set_colorkey((0,0,0)) 
+	self.setimage(imgfn,0,0,0)
 
     def setimage(self, imagefilename,r,g,b):
         self.image = pygame.image.load(imagefilename).convert()
@@ -43,13 +44,13 @@ class Box(Gameobject):
 	else:
 	    return 0
 
-
+	### NOTE fallcollide in box super class
     def fallcollide(self, room, player):
         # FIX BUG
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x  and 
 	player.x-room.relativex < self.x+self.w and 
-	player.y-room.relativey+player.h > self.y and 
+	(player.y-room.relativey) + player.hforplatform > self.y and###FIXME 
 	player.y-room.relativey < self.y + self.h):
 	    #print "collision with Game Object!"
 	    return 1 

@@ -49,11 +49,11 @@ class Bullet(Gameobject):
 	    
     def update(self,room,player):
 	if self.direction == "left":
-		self.x -= 5
+		self.x -= 10 
 		if self.x < self.startx - 600:
 			return 1
 	elif self.direction == "right":
-		self.x += 5
+		self.x += 10
 		if self.x > self.startx + 600:
 			return 1
 	return 0
