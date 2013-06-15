@@ -149,13 +149,13 @@ class Maproom1(MaproomDungeon):
         self.relativex = self.relativex - 10
 
 ### NOTE : the following code does not move a map window to the left,
-###	   the player cfannot go left
+###	   the player cannot go left
 
     def moveright(self):
         self.direction = "east"
 	self.prevx = self.relativex - 10
 	self.prevy = self.relativey
-	if self.relativex > 0:
+	if self.relativex < 30:
 	        self.relativex = self.relativex + 10
 
     def removeobject(self, o):
