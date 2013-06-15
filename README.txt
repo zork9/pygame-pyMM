@@ -4,4 +4,4 @@ run 'python game.py' after installing pygame (http://pygame.org)
 - c button : shoot
 - x button : jump
 
-<img>./pyMegaMan-screenshot-0.png</img>
+See the file pyMegaMan-screenshot-0.png for a screenshot.
