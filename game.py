@@ -102,7 +102,7 @@ class Game:
                     elif event.key == K_x:
                         if player.jumpcounter == 0:
                             player.jump(self.room)  
-                    elif event.key == K_z:
+                    elif event.key == K_c:
                         if player.prevdirection == "left":
 				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+20,"left")) 
                         elif player.prevdirection == "right":

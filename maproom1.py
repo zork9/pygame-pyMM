@@ -25,7 +25,7 @@ class Maproom1(MaproomDungeon):
     "Room with a (big) map"
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
-        self.background = pygame.image.load('./pics/bg1-2400x600.bmp').convert()
+        self.background = pygame.image.load('./pics/bg2-2400x600.bmp').convert()
 
 
 	self.w = 2400
@@ -43,33 +43,18 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
-#        self.gameobjects.append(Digdogger(1200,280))
-#        self.gameobjects.append(Digdogger(1970,320))
-#        self.gameobjects.append(Ironknuckle(600,300))
-#        self.gameobjects.append(Daira(100,300))
-#        self.gameobjects.append(Daira(900,300))
-#        self.gameobjects.append(Daira(1400,300))
-#        self.gameobjects.append(Daira(1300,300))
-        
-#        self.gameobjects.append(Deeler(900,100))
-#        self.gameobjects.append(Deeler(2000,100))
-#        self.gameobjects.append(Deeler(1700,100))
         self.gameobjects.append(SkeletonDrone(600,320))
         self.gameobjects.append(BigSnail(830,92))
         
         
         # left NOTE : boxes collide so put them after enemies !
-        self.gameobjects.append(Box(0,400,2400,25))
+        self.gameobjects.append(Box(0,400,1300,25))
+        self.gameobjects.append(Box(1280,460,300,25))
+        self.gameobjects.append(Box(1580,550,300,25))
+        self.gameobjects.append(Box(1920,580,300,25))
+        self.gameobjects.append(Box(2250,580,150,25))
         self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
-##        self.gameobjects.append(Bullfrog(500,225))
-##        self.gameobjects.append(Bullfrog(600,225))
-        # right
-        #self.gameobjects.append(Box(650,275,1750,80))
-        # left under
-        #self.gameobjects.append(Box(0,475,2400,80))
-##        self.gameobjects.append(Bullfrog(800,425))
-##        self.gameobjects.append(Bullfrog(900,425))
         # ropes       
         #self.ropes.append(Rope(605,100,300))
 
