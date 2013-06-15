@@ -22,6 +22,7 @@ from imagebox import *
 from skeletondrone import *
 from greenscorpion import *
 from rainman import *
+from bombertoad import *
 
 class Maproom1(MaproomDungeon):
     "Room with a (big) map"
@@ -44,6 +45,7 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
+        self.gameobjects.append(BomberToad(2000,420))
         self.gameobjects.append(Rainman(1000,140))
         self.gameobjects.append(GreenScorpion(600,320))
         self.gameobjects.append(GreenScorpion(700,320))
