@@ -80,6 +80,11 @@ class PlayerMegaMan(PlayerBase):
         image.set_colorkey((0,0,0))
         self.stimlibduck.addpicture(image)
 
+        self.stimlibhurt = Stateimagelibrary()	
+        image = pygame.image.load('./pics/megaman-right-hurt-1.bmp').convert()
+        image.set_colorkey((0,0,0))
+        self.stimlibhurt.addpicture(image)
+
         self.hitpoints = 10
         self.duck = 0
         self.jumpcounter = 0
@@ -87,6 +92,7 @@ class PlayerMegaMan(PlayerBase):
     def hit(self):
 	self.heartmeter.index -= 1
 	self.hitpoints -= 1
+	self.hurt += 1
 	if self.heartmeter.index <= 0:
 		return 0 #FIXME1 FIX for gameover when collision with enemies 
 	else:

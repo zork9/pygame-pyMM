@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 
-class PlayerBase:
-    def __init__(self):
-        1
+#class PlayerBase:
+#    def __init__(self):
+#        1
 
-class PlayerBase(PlayerBase,PlayerBase):
+#class PlayerBase(PlayerBase,PlayerBase):
+class PlayerBase:
     "Player"
 
     def __init__(self,heartmeter):
@@ -35,6 +36,8 @@ class PlayerBase(PlayerBase,PlayerBase):
         self.h = 50
 	self.hforplatform = 50  ### NOTE 
         self.fightcounter = 0
+
+	self.hurt = 0
 
     def drawstatic(self, screen):
         # NOTE
@@ -53,6 +56,13 @@ class PlayerBase(PlayerBase,PlayerBase):
 	self.stimlibduck.draw(screen,self.x,self.y)
 	
     def draw(self, screen):
+	if self.hurt > 0:
+		self.hurt += 1 
+            	self.stimlibhurt.drawstatic(screen,self.x,self.y,0)
+		if self.hurt > 3:
+			self.hurt = 0
+            	return
+			
         # NOTE
         if self.fightcounter > 0:
             self.fightcounter += 1
@@ -65,6 +75,8 @@ class PlayerBase(PlayerBase,PlayerBase):
         	self.stimlib.draw(screen, self.x,self.y)
 	elif self.direction == "left":
 		self.stimlibleft.draw(screen,self.x,self.y)
+
+
 
     def fight(self,room):
         self.fightcounter = 1
@@ -85,8 +97,9 @@ class PlayerBase(PlayerBase,PlayerBase):
 ##
 
         
-    def hit(self):##overrriden in playerlink.py
+    def hit(self):##overrriden in playermegaman.py
 	self.heartmeter.index -= 1
+	self.hurt = 1
 	if self.heartmeter.index <= 0:
 		return 0 #FIXME1 FIX for gameover when collision with enemies 
 	else:
