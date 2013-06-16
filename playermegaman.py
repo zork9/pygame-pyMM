@@ -81,6 +81,9 @@ class PlayerMegaMan(PlayerBase):
         self.stimlibduck.addpicture(image)
 
         self.stimlibhurt = Stateimagelibrary()	
+        image = pygame.image.load('./pics/megaman-left-hurt-1.bmp').convert()
+        image.set_colorkey((0,0,0))
+        self.stimlibhurt.addpicture(image)
         image = pygame.image.load('./pics/megaman-right-hurt-1.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibhurt.addpicture(image)

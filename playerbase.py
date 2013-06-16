@@ -57,8 +57,11 @@ class PlayerBase:
 	
     def draw(self, screen):
 	if self.hurt > 0:
-		self.hurt += 1 
-            	self.stimlibhurt.drawstatic(screen,self.x,self.y,0)
+		self.hurt += 1
+		if self.direction == "left": 
+            		self.stimlibhurt.drawstatic(screen,self.x,self.y,0)
+		elif self.direction == "right": 
+            		self.stimlibhurt.drawstatic(screen,self.x,self.y,1)
 		if self.hurt > 3:
 			self.hurt = 0
             	return
