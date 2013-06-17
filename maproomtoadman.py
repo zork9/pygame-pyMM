@@ -46,7 +46,7 @@ class MaproomToadMan(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
-        self.gameobjects.append(ToadMan(400,520))
+        self.gameobjects.append(ToadMan(400,420))
         
         # left NOTE : boxes collide so put them after enemies !
         #self.gameobjects.append(Box(0,400,640,25))

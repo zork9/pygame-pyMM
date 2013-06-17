@@ -68,7 +68,7 @@ class ToadMan(Gameobject):
 	###self.jumpradius = 7 
 	self.jumpradius = 17 
 	self.factor = 5
-	self.yoffset = 100 
+	self.yoffset = 0 
 	self.y = sqrt(abs(self.x*self.x*5 - self.jumpradius*self.jumpradius))/self.factor ####FIXME all + 200
 	self.y += self.yoffset ##KLUDGE
 	###self.x += 100
