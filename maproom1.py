@@ -62,8 +62,8 @@ class Maproom1(MaproomDungeon):
 
 	### roof box
         self.gameobjects.append(ImageBox(0,50,2400,45,"./pics/platform-265x50-1.bmp"))
-        self.gameobjects.append(Box(0,400,1300,25))
-        self.gameobjects.append(Box(1280,460,300,25))
+        self.gameobjects.append(Box(0,400,1300,250))
+        self.gameobjects.append(Box(1280,460,300,25))### FIXME some 25 -> 250
         self.gameobjects.append(Box(1580,550,300,25))
         self.gameobjects.append(Box(1920,560,300,25))
         self.gameobjects.append(Box(2250,560,150,25))

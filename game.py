@@ -255,6 +255,8 @@ class Game:
 	    ### Set player hitpoints in life bar
 	    heartmeter.index = player.hitpoints
 
+
+		### FIXME do not remove non-existent bullets b ->
             for b in self.room.bullets:
 		if b.update(self.room, player) == 1:
 			self.room.bullets.remove(b)
@@ -266,7 +268,8 @@ class Game:
 			if go:
 			### FIXME enemy hitpoints
 				if b.collide(self.room,go) == 1:
-					if b and go and set([b]):
+					s1 = set(self.room.gameobjects) 
+					if b and go and s1.intersection([b]):
 						self.room.gameobjects.remove(go)
 						self.room.bullets.remove(b)
 

@@ -52,7 +52,7 @@ class BomberToad(Gameobject):
 	self.counter = 0
 
     def draw(self, screen, room):
-	if randint(0,10) != 10 and self.counter == 0:
+	if randint(0,100) != 100 and self.counter == 0:
 		self.counter = 0
 		self.stimlib.drawstatic(screen, self.x-40+room.relativex,self.y+room.relativey, 0)
 	else:
