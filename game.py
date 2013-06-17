@@ -45,11 +45,6 @@ class Game:
         player = PlayerMegaMan(heartmeter)
         pygame.key.set_repeat(10,100)
         self.keydown = 0
-        self.inventoryitem = None
-        self.inventorymasterkey = None
-        self.inventorykey1 = None
-        self.inventorykey2 = None
-        self.inventoryrubysword = None
         
         self.talker = None
         gameflag = 0
@@ -64,6 +59,36 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     gameover = 1
 
+        selectorimage1 = pygame.image.load('./pics/selector-toadman-75x100.bmp').convert()
+        selectorimage2 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage3 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage4 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage5 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage6 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage7 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+        selectorimage8 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
+
+	gameover = 0
+
+        while gameover == 0:
+	    offset = 90
+            pygame.display.update()
+            screen.blit(blankimage, (0,0))
+            screen.blit(selectorimage1, (100+offset,100))
+            screen.blit(selectorimage2, (200+offset,100))
+            screen.blit(selectorimage3, (300+offset,100))
+            screen.blit(selectorimage4, (100+offset,200))
+            screen.blit(selectorimage5, (300+offset,200))
+            screen.blit(selectorimage6, (100+offset,300))
+            screen.blit(selectorimage7, (200+offset,300))
+            screen.blit(selectorimage8, (300+offset,300))
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    return
+                elif event.type == KEYDOWN:
+                    	gameover = 1
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    gameover = 1
             
         gameover = 0
         while gameover == 0:
