@@ -56,6 +56,8 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(BigSnail(2425,600))
         
         # left NOTE : boxes collide so put them after enemies !
+	### roof box
+        self.gameobjects.append(ImageBox(0,50,2400,45,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(Box(0,400,1300,25))
         self.gameobjects.append(Box(1280,460,300,25))
         self.gameobjects.append(Box(1580,550,300,25))
@@ -90,7 +92,7 @@ class Maproom1(MaproomDungeon):
 		i.draw(screen,self)
 		
     def isroomdownexit(self):
-	if self.relativex < -2400 - 640:
+	if self.relativex < -2370:
 		return 1
 	return 0
 
