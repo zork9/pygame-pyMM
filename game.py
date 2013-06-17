@@ -258,14 +258,17 @@ class Game:
             for b in self.room.bullets:
 		if b.update(self.room, player) == 1:
 			self.room.bullets.remove(b)
+			break
 		else:
 			b.draw(screen,self.room)
 
 		for go in self.room.gameobjects:
+			if go:
 			### FIXME enemy hitpoints
-			if b.collide(self.room,go) == 1:
-				self.room.gameobjects.remove(go)
-				self.room.bullets.remove(b)
+				if b.collide(self.room,go) == 1:
+					if b and go and set([b]):
+						self.room.gameobjects.remove(go)
+						self.room.bullets.remove(b)
 
             for o in self.room.gameobjects:
                 if o:
