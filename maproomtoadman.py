@@ -49,9 +49,9 @@ class MaproomToadMan(MaproomDungeon):
         self.gameobjects.append(ToadMan(400,420))
         
         # left NOTE : boxes collide so put them after enemies !
-        #self.gameobjects.append(Box(0,400,640,25))
+        self.gameobjects.append(Box(0,400,640,25))
 	# First BigSnail sits here
-        self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
+        #self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
         
  
     def draw(self,screen,player):
