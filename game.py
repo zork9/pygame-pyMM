@@ -59,6 +59,7 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     gameover = 1
 
+        blankpresskeytocontinueimage = pygame.image.load('./pics/blank-presskeytocontinue.bmp').convert()
         selectorimage1 = pygame.image.load('./pics/selector-toadman-75x100.bmp').convert()
         selectorimage2 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
         selectorimage3 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
@@ -67,13 +68,17 @@ class Game:
         selectorimage6 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
         selectorimage7 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
         selectorimage8 = pygame.image.load('./pics/selector-empty-75x100.bmp').convert()
-
+        selectorhighlightimage = pygame.image.load('./pics/selector-highlight-75x100.bmp').convert()
 	gameover = 0
 
         while gameover == 0:
 	    offset = 90
+	    selectoffset = 0
+	    self.selectormatrix = [[0,1,2],[0,1,2],[0,1,2]]
+	    self.selectorrow = 1
+	    self.selectorcol = 1
             pygame.display.update()
-            screen.blit(blankimage, (0,0))
+            screen.blit(blankpresskeytocontinueimage, (0,0))
             screen.blit(selectorimage1, (100+offset,100))
             screen.blit(selectorimage2, (200+offset,100))
             screen.blit(selectorimage3, (300+offset,100))
@@ -82,13 +87,38 @@ class Game:
             screen.blit(selectorimage6, (100+offset,300))
             screen.blit(selectorimage7, (200+offset,300))
             screen.blit(selectorimage8, (300+offset,300))
+            screen.blit(selectorhighlightimage, (100+offset+100*self.selectorcol,100*self.selectorrow))
+            #screen.blit(selectorhighlightimage, (100+offset,100))
             for event in pygame.event.get():
+	        screen.blit(blankimage, (0,0))
+	        screen.blit(selectorimage1, (100+offset,100))
+	        screen.blit(selectorimage2, (200+offset,100))
+	        screen.blit(selectorimage3, (300+offset,100))
+	        screen.blit(selectorimage4, (100+offset,200))
+	        screen.blit(selectorimage5, (300+offset,200))
+	        screen.blit(selectorimage6, (100+offset,300))
+	        screen.blit(selectorimage7, (200+offset,300))
+	        screen.blit(selectorimage8, (300+offset,300))
                 if event.type == QUIT:
                     return
                 elif event.type == KEYDOWN:
-                    	gameover = 1
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    gameover = 1
+                    if event.key == K_LEFT:
+			if self.selectorcol != 0:
+				self.selectorcol -= 1
+		    elif event.key == K_RIGHT:
+			if self.selectorrow != 2:
+				self.selectorcol += 1
+		    elif event.key == K_DOWN:
+			if self.selectorrow != 2:
+				self.selectorrow += 1
+		    elif event.key == K_UP:
+			if self.selectorrow != 0:
+				self.selectorrow -= 1
+                    else:	
+			gameover = 1
+                screen.blit(selectorhighlightimage, (100+offset+100*self.selectorcol,100*self.selectorrow))
+                #if event.type == pygame.MOUSEBUTTONDOWN:
+                #    gameover = 1
             
         gameover = 0
         while gameover == 0:
