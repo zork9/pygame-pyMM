@@ -84,18 +84,18 @@ class ToadMan(Gameobject):
 	###FIXME self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
 	if self.direction == 1:
 		if self.jumping == 0:
-			self.stimlibleft.drawstatic(screen, self.x,self.y,0)
+			self.stimlibleft.drawstatic(screen, self.x-40+room.relativex,self.y,0)
 		elif self.jumping < 0 and self.jumping > -4:
-			self.stimlibleft.drawstatic(screen, self.x,self.y,3)
+			self.stimlibleft.drawstatic(screen, self.x-40+room.relativex,self.y,3)
 		elif self.jumping < -4:
-			self.stimlibleft.drawstatic(screen, self.x,self.y,4)
+			self.stimlibleft.drawstatic(screen, self.x-40+room.relativex,self.y,4)
 	elif self.direction == 0:
 		if self.jumping == 0:
-			self.stimlibright.drawstatic(screen, self.x,self.y,0)
+			self.stimlibright.drawstatic(screen, self.x-40+room.relativex,self.y,0)
 		elif self.jumping < 0 and self.jumping > -4:
-			self.stimlibright.drawstatic(screen, self.x,self.y,3)
+			self.stimlibright.drawstatic(screen, self.x-40+room.relativex,self.y,3)
 		elif self.jumping < -4:
-			self.stimlibright.drawstatic(screen, self.x,self.y,4)
+			self.stimlibright.drawstatic(screen, self.x-40+room.relativex,self.y,4)
 	    
     def update(self,room,player):
 	if randint(0,20) == 10 and self.jumping == 0:

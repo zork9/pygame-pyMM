@@ -36,22 +36,14 @@ class MaproomToadMan(MaproomDungeon):
 
 	self.mapoffsetx = 400
 
-        ###self.northwall1 = Tilebox(1,1,60,48,16,1,'./pics/walldungeonnorth2-beholderglass-60x48.bmp')
-##        self.northwall1 = Tilebox(1,1,60,48,13,1,'./pics/walldungeonnorth1-60x48.bmp')
-##        self.southwall1 = Tilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
-##        self.westwall1 = Tilebox(360,200,48,60,1,10,'./pics/walldungeonwest1-48x60.bmp')
-##        self.eastwall1 = Tilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
-##        self.tileboxes.append(self.northwall1)
-##        self.tileboxes.append(self.westwall1)
-##        self.tileboxes.append(self.eastwall1)
-##        self.tileboxes.append(self.southwall1)
-
         self.gameobjects.append(ToadMan(400,420))
         
         # left NOTE : boxes collide so put them after enemies !
         self.gameobjects.append(Box(0,400,640,25))
-	# First BigSnail sits here
-        #self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
+        self.gameobjects.append(ImageBox(0,0,640,50,"./pics/platform-265x50-1.bmp"))
+	### walls 
+        self.addwestwall(0,0,50,480,"./pics/wall-level1-1.bmp")
+        self.addeastwall(590,0,50,480,"./pics/wall-level1-1.bmp")
         
  
     def draw(self,screen,player):
@@ -111,15 +103,15 @@ class MaproomToadMan(MaproomDungeon):
 	self.prevy = self.relativey
         self.relativex = self.relativex - 10
 
-### NOTE : the following code does not move a map window to the left,
+###FIX NOTE : the following code does not move a map window to the left,
 ###	   the player cannot go left
 
     def moveright(self):
         self.direction = "east"
 	self.prevx = self.relativex - 10
 	self.prevy = self.relativey
-	if self.relativex < 30:
-	        self.relativex = self.relativex + 10
+##	if self.relativex < 30:
+##	        self.relativex = self.relativex + 10
 
     def removeobject(self, o):
         for i in range(0,len(self.gameobjects)):

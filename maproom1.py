@@ -58,7 +58,8 @@ class Maproom1(MaproomDungeon):
         
         # left NOTE : boxes collide so put them after enemies !
 	### walls 
-        ###self.addeastwall(500,0,50,600,"./pics/megaman-left-1.bmp")
+        self.addeastwall(2700,0,50,600,"./pics/wall-level1-1.bmp")
+
 	### roof box
         self.gameobjects.append(ImageBox(0,50,2400,45,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(Box(0,400,1300,25))
