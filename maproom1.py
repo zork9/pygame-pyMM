@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from maproomdungeon import *
 from bigsnail import *
+from wall import *
 from imagebox import *
 from skeletondrone import *
 from greenscorpion import *
@@ -56,6 +57,8 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(BigSnail(2425,600))
         
         # left NOTE : boxes collide so put them after enemies !
+	### walls 
+        ###self.addeastwall(500,0,50,600,"./pics/megaman-left-1.bmp")
 	### roof box
         self.gameobjects.append(ImageBox(0,50,2400,45,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(Box(0,400,1300,25))

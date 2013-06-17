@@ -37,7 +37,6 @@ class Gameobject:
         
     def draw(self, screen, room):
         screen.blit(self.image,(self.x+room.relativex,self.y+room.relativey))
-	    
 	     
     def collidewithsword(self, room, player):
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)

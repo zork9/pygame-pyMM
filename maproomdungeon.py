@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from time import *
 from maproom import *
+from wall import *
 
 class MaproomDungeon(MaproomBase):
     "Room with a (big) map"
@@ -33,23 +34,29 @@ class MaproomDungeon(MaproomBase):
         self.ropes = []
 	self.bullets = []
         
-    def addnorthwall(self, x,y):
-        self.northwalls.append(MaproomNorthDungeonWall(x,y))
+    def addnorthwall(self, x,y,w,h,imagefilename):
+        self.northwalls.append(Wall(x,y,w,h,imagefilename))
 
-    def addsouthwall(self, x,y):
-        self.southwalls.append(MaproomSouthDungeonWall(x,y))
+    def addsouthwall(self, x,y,w,h,imagefilename):
+        self.southwalls.append(Wall(x,y,w,h,imagefilename))
 
-    def addwestwall(self, x,y):
-        self.westwalls.append(MaproomWestDungeonWall(x,y))
+    def addwestwall(self, x,y,w,h,imagefilename):
+        self.westwalls.append(Wall(x,y,w,h,imagefilename))
 
-    def addeastwall(self, x,y):
-        self.eastwalls.append(MaproomEastDungeonWall(x,y))
+    def addeastwall(self, x,y,w,h,imagefilename):
+        self.eastwalls.append(Wall(x,y,w,h,imagefilename))
         
     def draw(self,screen):
 	##print "x=%d" % self.relativex 
         screen.blit(self.background, (0+self.relativex, 0+self.relativey))
         for w in self.northwalls:
-            w.draw(screen,self.relativex,self.relativey)
+            w.draw(screen,self)
+        for w in self.southwalls:
+            w.draw(screen,self)
+        for w in self.westwalls:
+            w.draw(screen,self)
+        for w in self.eastwalls:
+            w.draw(screen,self)
 
     def collidewithropes(self, player):	
 	for i in self.ropes:

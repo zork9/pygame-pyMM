@@ -272,7 +272,7 @@ class Game:
                     o.fight(self.room,player,self.keydown)
                     if o.hitpoints <= 0:
                         self.room.removeobject(o)
-
+		
             if self.talker != None:
                 self.talker.talk(screen,font)
 
