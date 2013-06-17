@@ -33,7 +33,7 @@ class ToadMan(Gameobject):
 	Gameobject.__init__(self, xx, yy)
         self.w = 50
         self.h = 50 
-        self.hitpoints = 15 
+        self.hitpoints = 100 
         
         self.yy = yy
     
@@ -65,13 +65,11 @@ class ToadMan(Gameobject):
         image.set_colorkey((0,0,0)) 
 	self.stimlibright.addpicture(image)
 
-	###self.jumpradius = 7 
 	self.jumpradius = 17 
 	self.factor = 5
 	self.yoffset = 0 # NOTE KLUDGE 
-	self.y = sqrt(abs(self.x*self.x*5 - self.jumpradius*self.jumpradius))/self.factor ####FIXME all + 200
+	self.y = sqrt(abs(self.x*self.x*5 - self.jumpradius*self.jumpradius))/self.factor
 	self.y += self.yoffset ##KLUDGE
-	###self.x += 100
 	self.startx = self.x
 	self.starty = self.y
 	self.jumping = 0
@@ -81,7 +79,6 @@ class ToadMan(Gameobject):
 
 
     def draw(self, screen, room):
-	###FIXME self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
 	if self.direction == 1:
 		if self.jumping == 0:
 			self.stimlibleft.drawstatic(screen, self.x-40+room.relativex,self.y,0)
