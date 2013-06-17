@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 
 from maproom1 import *
+from maproomtoadman import *
 from meter import *
 from playermegaman import *
 from bullet import *
@@ -255,13 +256,12 @@ class Game:
     def chooseroom(self, roomnumber,font):
         if (roomnumber == 0):
             return
-        # NOTE: 1_X  woods around haunted castle
         elif (roomnumber == 1):
             self.talker = None
             self.room = Maproom1(self.x,self.y)
-        # set sword parameters
-        if self.inventoryrubysword:
-            self.sethitf(self.room.gameobjects.hit2)
+        elif (roomnumber == 2):
+            self.talker = None
+            self.room = MaproomToadMan(self.x,self.y)
             
 if __name__ == "__main__":
     foo = Game()

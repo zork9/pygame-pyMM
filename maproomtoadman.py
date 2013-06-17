@@ -25,13 +25,13 @@ from rainman import *
 from bombertoad import *
 from toadman import *
 
-class Maproom1(MaproomDungeon):
+class MaproomToadMan(MaproomDungeon):
     "Room with a (big) map"
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
-        self.background = pygame.image.load('./pics/bg2-2400x600.bmp').convert()
+        self.background = pygame.image.load('./pics/bgtoadman-640x600.bmp').convert()
 
-	self.w = 2400
+	self.w = 640
 	self.h = 480
 
 	self.mapoffsetx = 400
@@ -46,29 +46,12 @@ class Maproom1(MaproomDungeon):
 ##        self.tileboxes.append(self.eastwall1)
 ##        self.tileboxes.append(self.southwall1)
 
-        self.gameobjects.append(BomberToad(2000,420))
-        self.gameobjects.append(Rainman(1000,140))
-        self.gameobjects.append(GreenScorpion(600,320))
-        self.gameobjects.append(GreenScorpion(700,320))
-        self.gameobjects.append(GreenScorpion(800,320))
-        self.gameobjects.append(GreenScorpion(1000,320))
-        self.gameobjects.append(BigSnail(830,92))
-        self.gameobjects.append(BigSnail(2425,600))
+        self.gameobjects.append(ToadMan(400,520))
         
         # left NOTE : boxes collide so put them after enemies !
-        self.gameobjects.append(Box(0,400,1300,25))
-        self.gameobjects.append(Box(1280,460,300,25))
-        self.gameobjects.append(Box(1580,550,300,25))
-        self.gameobjects.append(Box(1920,560,300,25))
-        self.gameobjects.append(Box(2250,560,150,25))
+        #self.gameobjects.append(Box(0,400,640,25))
 	# First BigSnail sits here
         self.gameobjects.append(ImageBox(0,200,265,25,"./pics/platform-265x50-1.bmp"))
-	# Second BigSnail sits here
-        self.gameobjects.append(ImageBox(2400,704,265,25,"./pics/platform-265x50-1.bmp"))
-        self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
-        # ropes       
-        #self.ropes.append(Rope(605,100,300))
-
         
  
     def draw(self,screen,player):
@@ -90,7 +73,7 @@ class Maproom1(MaproomDungeon):
 		i.draw(screen,self)
 		
     def isroomdownexit(self):
-	if self.relativex < -2400 - 640:
+	if self.relativex  < -250 and self.relativex > -650 and self.relativey < -650:
 		return 1
 	return 0
 
@@ -128,8 +111,6 @@ class Maproom1(MaproomDungeon):
 	self.prevy = self.relativey
         self.relativex = self.relativex - 10
 
-	print "move map left %d" % self.relativex
-	
 ### NOTE : the following code does not move a map window to the left,
 ###	   the player cannot go left
 
