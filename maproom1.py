@@ -134,7 +134,7 @@ class Maproom1(MaproomDungeon):
 	self.prevy = self.relativey
         self.relativex = self.relativex - 10
 
-	print "move map left %d" % self.relativex
+	#print "move map left %d" % self.relativex
 	
 ### NOTE : the following code does not move a map window to the left,
 ###	   the player cannot go left
