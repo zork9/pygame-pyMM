@@ -40,7 +40,7 @@ class ImageBox(Box):
 	player.y > self.y+room.relativey and #FIXED +self.h
 	player.y < self.y+room.relativey + self.h):
 	    print "collision in box!"	
-	    return 2 
+	    return 1 
 	else:
 	    return 0
 

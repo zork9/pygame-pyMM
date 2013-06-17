@@ -39,7 +39,7 @@ class Box(Gameobject):
 	player.y > self.y+room.relativey + player.hforplatform and #FIXED +self.h
 	player.y < self.y+room.relativey):
 	    print "collision in box!"	
-	    return 2 
+	    return 1 
 	else:
 	    return 0
 

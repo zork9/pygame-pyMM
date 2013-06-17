@@ -230,13 +230,14 @@ class Game:
                     pygame.display.update()
                     screen.blit(blankimage, (0,0))
 
-            if self.room.collide(player) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
-                   o = player.hit()
-		   if o == 0:
-			player.hitpoints = -100###extra
+            if self.room.collide(player) == 2 or self.room.collide == 1: # NOTE: return 1 after player heartmeter runs out (player.hit)
+	           if self.room.collide == 2:	
+                   	o = player.hit()
+		   	if o == 0:
+				player.hitpoints = -100###extra
                	   else:
 			self.undomovecollide(player)
- 
+		 
             self.room.draw(screen,player)
             player.update(self.room)
             if self.keydown == 1:
