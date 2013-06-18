@@ -34,7 +34,7 @@ class ImageBox(Box):
         self.image = pygame.image.load(imagefilename).convert()
         self.image.set_colorkey((r,g,b)) 
 
-    def collide(self, room, player):
+    def collide(self, room, player, hploss):
 	if (player.x > self.x+room.relativex  and 
 	player.x < self.x+room.relativex+self.w and 
 	player.y > self.y+room.relativey and #FIXED +self.h

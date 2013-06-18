@@ -19,6 +19,7 @@ from pygame.locals import *
 
 from maproom1 import *
 from maproomtoadman import *
+from maproomheatman import *
 from meter import *
 from playermegaman import *
 from bullet import *
@@ -39,7 +40,9 @@ class Game:
         titleimage = pygame.image.load('./pics/megaman-titlescreen-640x480.bmp').convert()
         self.x = 0
         self.y = 0
-        
+       
+	self.hploss = 1 ## param which shows loss of 1 hp
+ 
         self.room = Maproom1(0,0)
         heartmeter = Meter()
         player = PlayerMegaMan(heartmeter)
@@ -166,7 +169,7 @@ class Game:
                 else:
                     player.direction = "none"
  
-            if self.room.collide(player) == 1 or player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (player.hit)
+            if self.room.collide(player, self.hploss) == 1 or player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (player.hit)
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
 	            	pygame.display.update()
@@ -181,7 +184,8 @@ class Game:
                     			gameover = 1
 					return
 				    
-            if self.room.collide(player) == 3 or self.room.collide(player) == 2:###Dungeon wall
+            loss = self.room.collide(player,self.hploss)###Dungeon wall
+            if loss == 3 or loss == 2:###Dungeon wall
                 f = self.room.fall(player)
                 if not f == 2:
                     self.room.movedown()#FIXME
@@ -230,7 +234,7 @@ class Game:
                     pygame.display.update()
                     screen.blit(blankimage, (0,0))
 
-            if self.room.collide(player) == 2 or self.room.collide == 1: # NOTE: return 1 after player heartmeter runs out (player.hit)
+            if self.room.collide(player,self.hploss) == 2 or self.room.collide == 1: # NOTE: return 1 after player heartmeter runs out (player.hit)
 	           if self.room.collide == 2:	
                    	o = player.hit()
 		   	if o == 0:
@@ -267,11 +271,13 @@ class Game:
 		for go in self.room.gameobjects:
 			if go:
 			### FIXME enemy hitpoints
-				if b.collide(self.room,go) == 1:
+				if b.collide(self.room,go,1) == 1: ## NOTE loss of 1 hitpoint
 					s1 = set(self.room.gameobjects) 
 					if b and go and s1.intersection([b]):
-						self.room.gameobjects.remove(go)
-						self.room.bullets.remove(b)
+						if go:
+							self.room.bullets.remove(b)
+			if go.hitpoints <= 0:
+				self.room.gameobjects.remove(go)
 
             for o in self.room.gameobjects:
                 if o:
@@ -324,6 +330,9 @@ class Game:
         elif (roomnumber == 2):
             self.talker = None
             self.room = MaproomToadMan(self.x,self.y)
+        elif (roomnumber == 3):
+            self.talker = None
+            self.room = MaproomHeatMan(self.x,self.y)
             
 if __name__ == "__main__":
     foo = Game()

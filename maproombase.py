@@ -85,7 +85,7 @@ class MaproomBase:
     def pickup(self, player):
         for i in range(0,len(self.gameobjects)):
 	    o = self.gameobjects[i]
-            if o and o.collide(self, player):
+            if o and o.collide(self, player,1):
                 id = o.pickup(self)
 		self.gameobjects[i] = None
                 return id# FIX 3 
@@ -95,7 +95,7 @@ class MaproomBase:
     def collidesword(self,player):
         for i in self.gameobjects:
 	    if i!= None:
-	    	c = i.collide(self,player)
+	    	c = i.collide(self,player,1)
 		if c == 1:
 			return i ## NOTE : returns collided entity (single)
 		self.relativex = self.prevx

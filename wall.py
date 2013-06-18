@@ -30,12 +30,12 @@ class Wall(Gameobject):
     def draw(self, screen, room):
         screen.blit(self.image, (self.x+room.relativex,self.y+room.relativey))
 
-    def collide(self, room, player):
+    def collide(self, room, player, hploss):
 	if (player.x > self.x+room.relativex  and 
 	player.x < self.x+room.relativex+self.w and 
 	player.y > self.y+room.relativey and 
 	player.y < self.y+room.relativey + self.h):
-	    print "collision with Dungeon Wall! x=%d y=%d" % (room.relativex,room.relativey) 
+	    print "collision with Wall! x=%d y=%d" % (room.relativex,room.relativey) 
 	    return 3 # NOTE return 3 for dungeon wall
 	else:
 	    return 0

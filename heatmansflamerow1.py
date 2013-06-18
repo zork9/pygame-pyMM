@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010
+# Copyright (C) Johan Ceuppens 2010-2013
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -23,20 +23,20 @@ from time import *
 from math import *
 from rng import *
 
-class Bullet(Gameobject):
+class HeatMansFlamerow1(Gameobject):
     ""
     def __init__(self,xx,yy,direction):
 	Gameobject.__init__(self, xx, yy)
         self.w = 20 
-        self.h = 20 
-        self.hitpoints = 2
+        self.h = 80 
+        self.hitpoints = 2000003
 
 	self.startx = xx
 	self.starty = yy
         
         self.yy = yy
     
-        self.image = pygame.image.load('./pics/bullet-1.bmp').convert()
+        self.image = pygame.image.load('./pics/heatman-flamerow-1.bmp').convert()
         self.image.set_colorkey((0,0,255))
         
 	self.direction = direction 
@@ -45,7 +45,6 @@ class Bullet(Gameobject):
         self.up = 0
 
     def draw(self, screen, room):
-            ###FIXscreen.blit(self.image, (self.x-40+room.relativex,self.y+room.relativey))
             screen.blit(self.image, (self.x-40, self.starty + room.relativey)) # NOTE starty
 	    
     def update(self,room,player):
@@ -59,25 +58,24 @@ class Bullet(Gameobject):
 			return 1
 	return 0
 	
-    def collide(self, room, player, hploss):
+    def collide(self, room, player):
         # FIX BUG
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x-self.w  and 
 	player.x-room.relativex < self.x+self.w+self.w and 
 	player.y-room.relativey > self.y-self.h and 
 	player.y-room.relativey < self.y + self.h +self.h):
-	    print "player collision with Bullet!"
+	    print "player collision with Flame!"
 	    return 1 
 	else:
 	    return 0 ## for game self.talker
 
-    def collide(self, room, o, hploss):
+    def collide(self, room, o):
 	if (o.x-room.relativex > self.x-self.w  and 
 	o.x-room.relativex < self.x+self.w+self.w and 
 	o.y-room.relativey > self.y-self.h and 
 	o.y-room.relativey < self.y + self.h +self.h):
 	    print "go collision with Bullet!"
-	    o.hitfrombullet(hploss)
 	    return 1 
 	else:
 	    return 0 ## for game self.talker

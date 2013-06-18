@@ -60,7 +60,7 @@ class Gameobject:
 	else:
 	    return 0
 
-    def collide(self, room, player):
+    def collide(self, room, player,hploss):
         # FIX BUG
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x  and 
@@ -127,6 +127,9 @@ class Gameobject:
 
     def pickup(self, room):
         return 0
+
+    def hitfrombullet(self,hploss):
+	self.hitpoints -= hploss
 
     def hit1(self):## NOTE decreases hitpoints
         self.hitpoints -= 1

@@ -66,30 +66,31 @@ class MaproomDungeon(MaproomBase):
 
       
 # NOTE player can be enemy 
-    def collide(self, player):	
+    def collide(self, player,hploss):	
 	for i in self.gameobjects:
-	    if i != None and i.collide(self, player):
+	    #print "go> %s" % i
+	    if i != None and i.collide(self,player,hploss): ### NOTE hp loss of hploss
 		return 2 # 1 kills game
 	for i in self.northwalls:
-	    if i != None and i.collide(self, player):
+	    if i != None and i.collide(self,player,hploss):
 		return 2
 	for i in self.southwalls:
-	    if i != None and i.collide(self, player):
+	    if i != None and i.collide(self,player,hploss):
 		return 2
 	for i in self.westwalls:
-	    if i != None and i.collide(self, player):
+	    if i != None and i.collide(self,player,hploss):
 		return 2
 	for i in self.eastwalls:
-	    if i != None and i.collide(self, player):
+	    if i != None and i.collide(self,player,hploss):
 		return 2
-	for i in self.tileboxes:
-		if i != None and i.collide(self,player):
-			#self.undomove()
-	                # FIXME self.undomove()
-			return 2 
-	for i in self.pits:
-		if i != None and i.collide(self,player):
-			return 2
+#	for i in self.tileboxes:
+#		if i != None and i.collide(self,player,hploss):
+#			#self.undomove()
+#	                # FIXME self.undomove()
+#			return 2 
+#	for i in self.pits:
+#		if i != None and i.collide(self,player,hploss):
+#			return 2
 	return 0
 
     def collidewithenemy(self, enemy):

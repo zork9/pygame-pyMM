@@ -33,7 +33,7 @@ class ToadMan(Gameobject):
 	Gameobject.__init__(self, xx, yy)
         self.w = 50
         self.h = 50 
-        self.hitpoints = 100 
+        self.hitpoints = 400 
         
         self.yy = yy
     
