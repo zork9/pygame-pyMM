@@ -88,7 +88,7 @@ class PlayerMegaMan(PlayerBase):
         image.set_colorkey((0,0,0))
         self.stimlibhurt.addpicture(image)
 
-        self.hitpoints = 10
+        self.hitpoints = 20 
         self.duck = 0
         self.jumpcounter = 0
 

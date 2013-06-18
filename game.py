@@ -240,7 +240,7 @@ class Game:
 		   	if o == 0:
 				player.hitpoints = -100###extra
                	   else:
-			self.undomovecollide(player)
+			self.undomovecollide(player,self.hploss)
 		 
             self.room.draw(screen,player)
             player.update(self.room)
@@ -295,8 +295,8 @@ class Game:
             roomnumber = self.room.exit(self)
             self.chooseroom(roomnumber,font)
 
-    def undomovecollide(self, player):
-            if self.room.collide(player) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
+    def undomovecollide(self, player, hploss):
+            if self.room.collide(player, hploss) == 2: # NOTE: return 1 after player heartmeter runs out (player.hit)
 		if player.direction == "left":
 			self.room.moveleft() 
 			self.room.moveleft() 
@@ -310,8 +310,8 @@ class Game:
 			self.room.moveup()
 			self.room.moveup()
 
-		if self.room.collide(player) == 2:
-			self.undomovecollide(player) 
+		if self.room.collide(player,hploss) == 2:
+			self.undomovecollide(player,hploss) 
 
     def sethitf(self, hitf):
         for i in self.room.gameobjects:

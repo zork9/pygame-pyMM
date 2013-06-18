@@ -68,6 +68,7 @@ class Gameobject:
 	player.y-room.relativey > self.y and 
 	player.y-room.relativey < self.y + self.h):
 	    #print "collision with Game Object!"
+	    player.hitpoints -= hploss
 	    return 1 
 	else:
 	    return 0 ## for game self.talker
