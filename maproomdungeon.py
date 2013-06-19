@@ -64,6 +64,13 @@ class MaproomDungeon(MaproomBase):
 		return 2
 	return 0
 
+    def collidewithladdersdown(self, player):	
+	for i in self.ladders:
+	    if i != None and i.collidewithladderdown(self, player):
+		return 2
+	return 0
+
+      
       
 # NOTE player can be enemy 
     def collide(self, player,hploss):	

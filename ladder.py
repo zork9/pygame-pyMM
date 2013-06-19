@@ -28,8 +28,10 @@ class Ladder:
         self.image = pygame.image.load(imagefilename).convert()
         self.image.set_colorkey((0,0,0)) 
         self.hitpoints = 999999
-        # NOTE : decrease 1 hitpoint with default sword
-        
+
+       	self.ladderoffsetup = 50
+       	self.ladderoffsetup2 = 50
+ 
     def draw(self, screen, room):
         screen.blit(self.image,(self.x+room.relativex+self.w*2,self.y+room.relativey))
 	    
@@ -38,12 +40,27 @@ class Ladder:
         # print 'rope x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x and 
 	player.x-room.relativex < self.x+self.w and 
-	player.y-room.relativey > self.y and
+	player.y-room.relativey > self.y - self.ladderoffsetup and
 	player.y-room.relativey < self.y + self.h):
 	    #print "collision with Ladder!"
 	    return 1 
 	else:
 	    return 0
+
+
+	## For entering the ladder down wise
+
+    def collidewithladderdown(self, room, player):
+        # print 'rope x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
+	if (player.x-room.relativex > self.x and 
+	player.x-room.relativex < self.x+self.w and 
+	player.y-room.relativey > self.y - self.ladderoffsetup - self.ladderoffsetup2 and
+	player.y-room.relativey < self.y + self.h):
+	    #print "collision with Ladder!"
+	    return 1 
+	else:
+	    return 0
+    
     
     def update(self,room,player):
 	1

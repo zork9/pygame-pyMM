@@ -214,7 +214,7 @@ class Game:
                                     self.room.movedown()   
                             elif event.key == K_DOWN:
 ##                              if at the end of the rope, have to jump off  
-                                if self.room.collidewithladders(player) == 2:
+                                if self.room.collidewithladdersdown(player) == 2:
                                     self.room.moveup()
                             elif event.key == K_RIGHT:
                                 self.room.moveleft()
