@@ -73,8 +73,11 @@ class Maproom1(MaproomDungeon):
 	# Second BigSnail sits here
         self.gameobjects.append(ImageBox(2400,704,265,25,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
-        # ladders       
-        ### self.ladders.append(Ladder(605,200,20,300,"./pics/ladder-heatmanlevel-20x200.bmp"))
+        # ladders      
+	# first part 
+        self.ladders.append(Ladder(1000,200,20,71,"./pics/ladder-toadmanlevel-20x71.bmp"))
+	# second part 
+        self.ladders.append(Ladder(1000,271,20,71,"./pics/ladder-toadmanlevel-20x71.bmp"))
 
         
  
