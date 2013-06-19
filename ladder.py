@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010 
+# Copyright (C) Johan Ceuppens 2010-2013 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -54,7 +54,7 @@ class Ladder:
         # print 'rope x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x and 
 	player.x-room.relativex < self.x+self.w and 
-	player.y-room.relativey > self.y - self.ladderoffsetup - self.ladderoffsetup2 and
+	player.y-room.relativey > (self.y - self.ladderoffsetup - self.ladderoffsetup2) and
 	player.y-room.relativey < self.y + self.h):
 	    #print "collision with Ladder!"
 	    return 1 

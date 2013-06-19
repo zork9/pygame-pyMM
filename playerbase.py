@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010
+# Copyright (C) Johan Ceuppens 2010-2013
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -51,6 +51,9 @@ class PlayerBase:
 
     def drawclimbing(self, screen):
 	self.stimlibclimbing.draw(screen,self.x,self.y)
+
+    def drawclimbingstatic(self, screen):
+	self.stimlibclimbing.drawstatic(screen,self.x,self.y,0)
 
     def drawduck(self, screen):
 	self.stimlibduck.draw(screen,self.x,self.y)

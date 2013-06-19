@@ -204,18 +204,25 @@ class Game:
                         if event.type == QUIT:
                             return
                         elif event.type == KEYDOWN:
-            	    
-                            # player 1 key controls
-                            ##player.draw(screen)
-                            ##if event.key == K_z:
-                             ##   player.fight(self.room)  
                             if event.key == K_UP:
                                 if self.room.collidewithladders(player) == 2:
                                     self.room.movedown()   
+		                    self.room.draw(screen,player)
+		                    player.update(self.room)
+		                    player.drawclimbing(screen)
+		                    heartmeter.draw(screen) 
+		                    pygame.display.update()
+		                    screen.blit(blankimage, (0,0))
                             elif event.key == K_DOWN:
 ##                              if at the end of the rope, have to jump off  
                                 if self.room.collidewithladdersdown(player) == 2:
                                     self.room.moveup()
+		                    self.room.draw(screen,player)
+		                    player.update(self.room)
+		                    player.drawclimbing(screen)
+		                    heartmeter.draw(screen) 
+		                    pygame.display.update()
+		                    screen.blit(blankimage, (0,0))
                             elif event.key == K_RIGHT:
                                 self.room.moveleft()
                                 gameflag = 1    
@@ -227,13 +234,13 @@ class Game:
                             elif event.key == K_z:
                                 gameflag = 1
 
+		    self.room.draw(screen,player)
+		    player.update(self.room)
+		    player.drawclimbingstatic(screen)
+		    heartmeter.draw(screen) 
+		    pygame.display.update()
+		    screen.blit(blankimage, (0,0))
 
-                    self.room.draw(screen,player)
-                    player.update(self.room)
-                    player.drawclimbing(screen)
-                    heartmeter.draw(screen) 
-                    pygame.display.update()
-                    screen.blit(blankimage, (0,0))
 
             if self.room.collide(player,self.hploss) == 2 or self.room.collide == 1: # NOTE: return 1 after player heartmeter runs out (player.hit)
 	           if self.room.collide == 2:	
