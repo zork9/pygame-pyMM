@@ -19,6 +19,7 @@ from pygame.locals import *
 from maproomdungeon import *
 from bigsnail import *
 from wall import *
+from ladder import *
 from imagebox import *
 from skeletondrone import *
 from greenscorpion import *
@@ -72,8 +73,8 @@ class Maproom1(MaproomDungeon):
 	# Second BigSnail sits here
         self.gameobjects.append(ImageBox(2400,704,265,25,"./pics/platform-265x50-1.bmp"))
         self.gameobjects.append(ImageBox(800,200,265,25,"./pics/platform-265x50-1.bmp"))
-        # ropes       
-        #self.ropes.append(Rope(605,100,300))
+        # ladders       
+        ### self.ladders.append(Ladder(605,200,20,300,"./pics/ladder-heatmanlevel-20x200.bmp"))
 
         
  
@@ -90,7 +91,7 @@ class Maproom1(MaproomDungeon):
 	    if i != None:
 		i.update(self,player)
 		i.draw(screen,self)
-	for i in self.ropes:
+	for i in self.ladders:
 	    if i != None:
 		i.update(self,player)
 		i.draw(screen,self)

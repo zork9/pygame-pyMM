@@ -71,7 +71,10 @@ class PlayerMegaMan(PlayerBase):
         self.stimlibfight.addpicture(image)
 
         self.stimlibclimbing = Stateimagelibrary()	
-        image = pygame.image.load('./pics/megaman-right-1.bmp').convert()
+        image = pygame.image.load('./pics/megaman-climbing-1.bmp').convert()
+        image.set_colorkey((0,0,255))
+        self.stimlibclimbing.addpicture(image)
+        image = pygame.image.load('./pics/megaman-climbing-2.bmp').convert()
         image.set_colorkey((0,0,255))
         self.stimlibclimbing.addpicture(image)
 

@@ -194,9 +194,11 @@ class Game:
                 gameflag = 0
             elif f == 0:
                 1#gameflag = 1
-            if self.room.collidewithropes(player) == 2:
+            if self.room.collidewithladders(player) == 2:
                 
                 while gameflag == 0:
+
+	    	    sleep(0.05)
 
                     for event in pygame.event.get():
                         if event.type == QUIT:
@@ -208,11 +210,11 @@ class Game:
                             ##if event.key == K_z:
                              ##   player.fight(self.room)  
                             if event.key == K_UP:
-                                if self.room.collidewithropes(player) == 2:
+                                if self.room.collidewithladders(player) == 2:
                                     self.room.movedown()   
                             elif event.key == K_DOWN:
 ##                              if at the end of the rope, have to jump off  
-                                if self.room.collidewithropes(player) == 2:
+                                if self.room.collidewithladders(player) == 2:
                                     self.room.moveup()
                             elif event.key == K_RIGHT:
                                 self.room.moveleft()
@@ -229,7 +231,6 @@ class Game:
                     self.room.draw(screen,player)
                     player.update(self.room)
                     player.drawclimbing(screen)
-                    self.taskbar.draw()
                     heartmeter.draw(screen) 
                     pygame.display.update()
                     screen.blit(blankimage, (0,0))

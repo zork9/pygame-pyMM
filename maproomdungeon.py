@@ -31,7 +31,7 @@ class MaproomDungeon(MaproomBase):
         self.gameobjects = []
         self.tileboxes = []
         self.pits = []
-        self.ropes = []
+        self.ladders = []
 	self.bullets = []
         
     def addnorthwall(self, x,y,w,h,imagefilename):
@@ -58,9 +58,9 @@ class MaproomDungeon(MaproomBase):
         for w in self.eastwalls:
             w.draw(screen,self)
 
-    def collidewithropes(self, player):	
-	for i in self.ropes:
-	    if i != None and i.collidewithrope(self, player):
+    def collidewithladders(self, player):	
+	for i in self.ladders:
+	    if i != None and i.collidewithladder(self, player):
 		return 2
 	return 0
 
