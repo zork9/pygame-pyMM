@@ -29,7 +29,7 @@ class BigSnail(Gameobject):
 	Gameobject.__init__(self, xx, yy)
         self.w = 180
         self.h = 110 
-        self.hitpoints = 2
+        self.hitpoints = 6
 
 	self.eyesclosedcounter = 0
         
@@ -55,7 +55,20 @@ class BigSnail(Gameobject):
 	        self.stimlib.draw(screen, self.x-40+room.relativex,self.y+room.relativey)
 	    
     def update(self,room,player):
-	1 
+	1
+
+    def collide(self, room, player,hploss):
+        # FIX BUG
+        # print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
+	if (player.x-room.relativex > self.x  and 
+	player.x-room.relativex < self.x+self.w and 
+	player.y-room.relativey > self.y and 
+	player.y-room.relativey < self.y + self.h):
+	    print "collision with BigSnail!"
+	    player.hitpoints -= hploss
+	    return 1 
+	else:
+	    return 0 ## for game self.talker
 
     def fight(self,room,player,keydown = -1):
         1

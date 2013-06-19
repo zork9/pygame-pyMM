@@ -130,11 +130,7 @@ class Game:
                     return
                 elif event.type == KEYDOWN:
                     if event.key == K_z:
-                        1###if self.keydown == 2 or player.duck:
-                        #    player.fightlow(self.room)
-                        #else:
-                        #    player.fightmedium(self.room)
-                        break
+                        1
                     # FIXME KLUDGE
             	    self.keydown = 1
                     # player 1 key controls
@@ -157,14 +153,14 @@ class Game:
                         self.room.moveleft()    
 			player.prevdirection = player.direction
 			player.direction = "right"
-                    elif event.key == K_x:
+                    if event.key == K_x:
                         if player.jumpcounter == 0:
                             player.jump(self.room)  
-                    elif event.key == K_c:
+                    if event.key == K_c:
                         if player.prevdirection == "left":
-				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+10,"left")) 
+				self.room.bullets.append(Bullet(player.x-player.w/2,player.y+player.h/2-self.room.relativey,"left")) 
                         elif player.prevdirection == "right":
-				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+10,"right")) 
+				self.room.bullets.append(Bullet(player.x+player.w/2,player.y+player.h/2-self.room.relativey,"right")) 
     
                 else:
                     player.direction = "none"
@@ -289,7 +285,7 @@ class Game:
 
             for o in self.room.gameobjects:
                 if o:
-                    o.fight(self.room,player,self.keydown)
+                    ###FIX o.fight(self.room,player,self.keydown)
                     if o.hitpoints <= 0:
                         self.room.removeobject(o)
 		

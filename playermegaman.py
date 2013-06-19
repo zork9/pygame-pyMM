@@ -151,9 +151,12 @@ class PlayerMegaMan(PlayerBase):
     def update(self,room):
        if self.jumpcounter > 0 and self.jumpcounter < 200:
             room.relativey += 20
-            self.jumpcounter += 15
+            self.jumpcounter += 12
        else:   
             self.jumpcounter = 0
             
+    def hitfrombullet(self,hploss):
+	1 #kludge so the player can collide with its own bullets
+	
     def setrubysword(self):
 	self.sword = RubySword(0,0)
