@@ -31,6 +31,7 @@ class MaproomDungeon(MaproomBase):
         self.gameobjects = []
         self.tileboxes = []
         self.pits = []
+        self.ropes = []
         self.ladders = []
 	self.bullets = []
         
