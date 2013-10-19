@@ -1,3 +1,6 @@
+
+This software is released under the GPL version 2 and BSD license.
+
 run 'python game.py' after installing pygame (http://pygame.org)
 
 - arrows movement

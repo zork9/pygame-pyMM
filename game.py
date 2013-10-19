@@ -57,7 +57,7 @@ class Game:
         self.y = 0
        
         self.hploss = 1 ## param which shows loss of 1 hp
-        ###self.room = MaproomHeatMan(0,0)
+        ### self.room = MaproomHeatMan(0,0)
         self.room = Maproom1(0,0)
         heartmeter = Meter()
         player = PlayerMegaMan(heartmeter)
@@ -89,26 +89,44 @@ class Game:
         selectorhighlightimage = pygame.image.load('./pics/selector-highlight-75x100.bmp').convert()
         gameover = 0
 
-        while gameover == 0:
-            offset = 90
-            selectoffset = 0
-            self.selectormatrix = [[0,1,2],[0,1,2],[0,1,2]]
-            self.selectorrow = 1
-            self.selectorcol = 1
+        offset = 90
+        selectoffset = 0
+        self.selectormatrix = [[0,1,2],[0,1,2],[0,1,2]]
+        self.selectorrow = 1
+        self.selectorcol = 1
+        screen.blit(blankpresskeytocontinueimage, (0,0))
+        screen.blit(selectorimage1, (100+offset,100))
+        screen.blit(selectorimage2, (200+offset,100))
+        screen.blit(selectorimage3, (300+offset,100))
+        screen.blit(selectorimage4, (100+offset,200))
+        screen.blit(selectorimage5, (300+offset,200))
+        screen.blit(selectorimage6, (100+offset,300))
+        screen.blit(selectorimage7, (200+offset,300))
+        screen.blit(selectorimage8, (300+offset,300))
+        screen.blit(selectorhighlightimage, (200+offset,200))
+
+	while gameover == 0:
             pygame.display.update()
-            screen.blit(blankpresskeytocontinueimage, (0,0))
-            screen.blit(selectorimage1, (100+offset,100))
-            screen.blit(selectorimage2, (200+offset,100))
-            screen.blit(selectorimage3, (300+offset,100))
-            screen.blit(selectorimage4, (100+offset,200))
-            screen.blit(selectorimage5, (300+offset,200))
-            screen.blit(selectorimage6, (100+offset,300))
-            screen.blit(selectorimage7, (200+offset,300))
-            screen.blit(selectorimage8, (300+offset,300))
-            screen.blit(selectorhighlightimage, (100+offset+100*self.selectorcol,100*self.selectorrow))
-            #screen.blit(selectorhighlightimage, (100+offset,100))
             for event in pygame.event.get():
-                screen.blit(blankimage, (0,0))
+                if event.type == QUIT:
+                    return
+                elif event.type == KEYDOWN:
+                    if event.key == K_LEFT:
+                        if self.selectorcol > 0:
+                                self.selectorcol -= 1
+                    elif event.key == K_RIGHT:
+                        if self.selectorcol < 2:
+                                self.selectorcol += 1
+                    elif event.key == K_DOWN:
+                        if self.selectorrow < 2:
+                                self.selectorrow += 1
+                    elif event.key == K_UP:
+                        if self.selectorrow > 0:
+                                self.selectorrow -= 1
+                    else:### press any key except arrows       
+                        gameover = 1
+
+		screen.blit(blankimage, (0,0))
                 screen.blit(selectorimage1, (100+offset,100))
                 screen.blit(selectorimage2, (200+offset,100))
                 screen.blit(selectorimage3, (300+offset,100))
@@ -117,24 +135,8 @@ class Game:
                 screen.blit(selectorimage6, (100+offset,300))
                 screen.blit(selectorimage7, (200+offset,300))
                 screen.blit(selectorimage8, (300+offset,300))
-                if event.type == QUIT:
-                    return
-                elif event.type == KEYDOWN:
-                    if event.key == K_LEFT:
-                        if self.selectorcol != 0:
-                                self.selectorcol -= 1
-                    elif event.key == K_RIGHT:
-                        if self.selectorrow != 2:
-                                self.selectorcol += 1
-                    elif event.key == K_DOWN:
-                        if self.selectorrow != 2:
-                                self.selectorrow += 1
-                    elif event.key == K_UP:
-                        if self.selectorrow != 0:
-                                self.selectorrow -= 1
-                    else:       
-                        gameover = 1
-                screen.blit(selectorhighlightimage, (100+offset+100*self.selectorcol,100*self.selectorrow))
+                screen.blit(selectorhighlightimage, (100+offset+100*self.selectorcol,offset+100*self.selectorrow))
+            	pygame.display.update()
                 #if event.type == pygame.MOUSEBUTTONDOWN:
                 #    gameover = 1
             
